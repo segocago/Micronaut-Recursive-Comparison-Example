@@ -1,6 +1,6 @@
 package example.micronaut.model;
 
-public class Teacher {
+public class Student {
 
   private Integer id;
 
@@ -8,12 +8,12 @@ public class Teacher {
 
   private Department department;
 
-  public Teacher(String name, Department department) {
+  public Student(String name, Department department) {
     this.name = name;
     this.department = department;
   }
 
-  public Teacher(Integer id, String name, Department department) {
+  public Student(Integer id, String name, Department department) {
     this.id = id;
     this.name = name;
     this.department = department;

@@ -7,7 +7,7 @@ public class SchoolDTO {
 
   private String name;
 
-  private List<TeacherDTO> teachers;
+  private List<StudentDTO> teachers;
 
   private String address;
 
@@ -17,7 +17,7 @@ public class SchoolDTO {
 
   private String founder;
 
-  public SchoolDTO(String name, List<TeacherDTO> teachers) {
+  public SchoolDTO(String name, List<StudentDTO> teachers) {
     this.name = name;
     this.teachers = teachers;
   }
@@ -30,12 +30,12 @@ public class SchoolDTO {
     this.name = name;
   }
 
-  public List<TeacherDTO> getTeachers() {
+  public List<StudentDTO> getTeachers() {
     return teachers;
   }
 
-  public void setTeachers(List<TeacherDTO> teacherDTO) {
-    this.teachers = teacherDTO;
+  public void setTeachers(List<StudentDTO> studentDTO) {
+    this.teachers = studentDTO;
   }
 
   public String getAddress() {

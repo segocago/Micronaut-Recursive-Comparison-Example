@@ -7,7 +7,7 @@ public class School {
 
   private String name;
 
-  private List<Teacher> teachers;
+  private List<Student> students;
 
   private String address;
 
@@ -17,9 +17,9 @@ public class School {
 
   private String founder;
 
-  public School(String name, List<Teacher> teachers) {
+  public School(String name, List<Student> students) {
     this.name = name;
-    this.teachers = teachers;
+    this.students = students;
   }
 
   public String getName() {
@@ -30,12 +30,12 @@ public class School {
     this.name = name;
   }
 
-  public List<Teacher> getTeachers() {
-    return teachers;
+  public List<Student> getTeachers() {
+    return students;
   }
 
-  public void setTeachers(List<Teacher> teachers) {
-    this.teachers = teachers;
+  public void setTeachers(List<Student> students) {
+    this.students = students;
   }
 
   public String getAddress() {
