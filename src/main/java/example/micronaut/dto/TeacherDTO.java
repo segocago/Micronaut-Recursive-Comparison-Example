@@ -1,6 +1,8 @@
-package example.micronaut.model;
+package example.micronaut.dto;
 
-public class Teacher {
+import example.micronaut.model.Department;
+
+public class TeacherDTO {
 
   private Integer id;
 
@@ -8,15 +10,15 @@ public class Teacher {
 
   private Department department;
 
-  public Teacher(String name, Department department) {
+  public TeacherDTO(String name, Department department) {
     this.name = name;
     this.department = department;
   }
 
-  public Teacher(Integer id, String name, Department department) {
-    this.id = id;
+  public TeacherDTO(Integer id, String name, Department department) {
     this.name = name;
     this.department = department;
+    this.id = id;
   }
 
   public Integer getId() {
