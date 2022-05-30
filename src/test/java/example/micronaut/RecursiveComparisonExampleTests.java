@@ -95,7 +95,7 @@ public class RecursiveComparisonExampleTests {
     assertThat(school).usingRecursiveComparison().isNotEqualTo(schoolDTO);
 
     //We can reference the fields of nested objects with ignoringFields() method
-    assertThat(school).usingRecursiveComparison().ignoringFields("teachers.id").isEqualTo(schoolDTO);
+    assertThat(school).usingRecursiveComparison().ignoringFields("students.id").isEqualTo(schoolDTO);
   }
 
   @Test
