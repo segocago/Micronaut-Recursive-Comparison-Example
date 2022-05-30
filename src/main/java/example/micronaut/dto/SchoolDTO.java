@@ -1,25 +1,24 @@
 package example.micronaut.dto;
 
-import java.time.OffsetDateTime;
 import java.util.List;
 
 public class SchoolDTO {
 
   private String name;
 
-  private List<StudentDTO> teachers;
+  private List<StudentDTO> students;
 
   private String address;
 
   private String phoneNumber;
 
-  private OffsetDateTime foundationDate;
+  private String foundationDate;
 
   private String founder;
 
-  public SchoolDTO(String name, List<StudentDTO> teachers) {
+  public SchoolDTO(String name, List<StudentDTO> students) {
     this.name = name;
-    this.teachers = teachers;
+    this.students = students;
   }
 
   public String getName() {
@@ -30,12 +29,12 @@ public class SchoolDTO {
     this.name = name;
   }
 
-  public List<StudentDTO> getTeachers() {
-    return teachers;
+  public List<StudentDTO> getStudents() {
+    return students;
   }
 
-  public void setTeachers(List<StudentDTO> studentDTO) {
-    this.teachers = studentDTO;
+  public void setStudents(List<StudentDTO> students) {
+    this.students = students;
   }
 
   public String getAddress() {
@@ -54,11 +53,11 @@ public class SchoolDTO {
     this.phoneNumber = phoneNumber;
   }
 
-  public OffsetDateTime getFoundationDate() {
+  public String getFoundationDate() {
     return foundationDate;
   }
 
-  public void setFoundationDate(OffsetDateTime foundationDate) {
+  public void setFoundationDate(String foundationDate) {
     this.foundationDate = foundationDate;
   }
 

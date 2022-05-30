@@ -6,6 +6,8 @@ import example.micronaut.model.Department;
 import example.micronaut.model.School;
 import example.micronaut.model.Student;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -89,10 +91,36 @@ public class RecursiveComparisonExampleTests {
     School school = new School("PTA Primary School", students);
     SchoolDTO schoolDTO = new SchoolDTO("PTA Primary School", studentDTOs);
 
-    //This that fails since one teacher list does not have id set while the other teacher list have id fields set
+    //This assertion fails since one teacher list does not have id set while the other teacher list have id fields set
     assertThat(school).usingRecursiveComparison().isNotEqualTo(schoolDTO);
 
     //We can reference the fields of nested objects with ignoringFields() method
     assertThat(school).usingRecursiveComparison().ignoringFields("teachers.id").isEqualTo(schoolDTO);
+  }
+
+  @Test
+  public void testRecursiveComparisonWithCustomComparator() {
+
+    List<Student> students = List.of(
+        new Student("Cagatay", Department.MATH),
+        new Student("Alex", Department.CHEMISTRY));
+
+    List<StudentDTO> studentDTOs = List.of(
+        new StudentDTO("Cagatay", Department.MATH),
+        new StudentDTO("Alex", Department.CHEMISTRY));
+
+    School school = new School("PTA Primary School", students);
+    school.setFoundationDate(OffsetDateTime.of(2022, 05, 30, 21, 30, 0, 0, ZoneOffset.UTC));
+
+    SchoolDTO schoolDTO = new SchoolDTO("PTA Primary School", studentDTOs);
+    schoolDTO.setFoundationDate("2022-05-30T21:30Z");
+
+    assertThat(school)
+        .usingRecursiveComparison()
+        //First parameters is a comparator written as lambda expression
+        .withComparatorForFields(
+            (dateObject, stringDate) -> ((OffsetDateTime) dateObject).toString().equals((String) stringDate)
+                ? 0 : 1, "foundationDate")
+        .isEqualTo(schoolDTO);
   }
 }
