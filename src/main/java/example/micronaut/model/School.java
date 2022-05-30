@@ -6,11 +6,11 @@ public class School {
 
   private String name;
 
-  private List<Teacher> teacher;
+  private List<Teacher> teachers;
 
-  public School(String name, List<Teacher> teacher) {
+  public School(String name, List<Teacher> teachers) {
     this.name = name;
-    this.teacher = teacher;
+    this.teachers = teachers;
   }
 
   public String getName() {
@@ -21,11 +21,11 @@ public class School {
     this.name = name;
   }
 
-  public List<Teacher> getTeacher() {
-    return teacher;
+  public List<Teacher> getTeachers() {
+    return teachers;
   }
 
-  public void setTeacher(List<Teacher> teacher) {
-    this.teacher = teacher;
+  public void setTeachers(List<Teacher> teachers) {
+    this.teachers = teachers;
   }
 }

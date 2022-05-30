@@ -52,16 +52,20 @@ public class RecursiveComparisonExampleTests {
   public void testRecursiveComparisonWithIgnoredFields() {
 
     List<Teacher> teachers = List.of(
-        new Teacher("Cagatay", Department.MATH),
-        new Teacher("Alex", Department.CHEMISTRY));
+        new Teacher(1, "Cagatay", Department.MATH),
+        new Teacher(2, "Alex", Department.CHEMISTRY));
 
     List<TeacherDTO> teachersWithIds = List.of(
-        new TeacherDTO(1, "Cagatay", Department.MATH),
-        new TeacherDTO(2, "Alex", Department.CHEMISTRY));
+        new TeacherDTO("Cagatay", Department.MATH),
+        new TeacherDTO("Alex", Department.CHEMISTRY));
 
     School school = new School("PTA Primary School", teachers);
     SchoolDTO schoolDTO = new SchoolDTO("PTA Primary School", teachersWithIds);
 
-    assertThat(school).usingRecursiveComparison().isEqualTo(schoolDTO);
+    //This that fails since one one teacher list does not have id set while the other teacher list have id fields set
+    assertThat(school).usingRecursiveComparison().isNotEqualTo(schoolDTO);
+
+    //We can reference the fields of nested objects with ignoringFields() method
+    assertThat(school).usingRecursiveComparison().ignoringFields("teachers.id").isEqualTo(schoolDTO);
   }
 }
